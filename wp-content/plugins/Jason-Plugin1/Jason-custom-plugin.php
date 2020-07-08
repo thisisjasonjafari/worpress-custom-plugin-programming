@@ -35,14 +35,19 @@ class JasonnnPlugin
 
   function activate()
   {
+    // generate custom post type
+    // flush rewrite rules
   }
 
   function deactivate()
   {
+     // flush rewrite rules
   }
 
   function uninstall()
   {
+    // delete custom post tpe
+    // delete all the plugin data from the db
   }
 }
 
