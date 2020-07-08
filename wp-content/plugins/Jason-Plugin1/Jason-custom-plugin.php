@@ -47,13 +47,7 @@ class JasonnnPlugin
     // flush rewrite rules
     flush_rewrite_rules();
   }
-
-  function uninstall()
-  {
-    // delete custom post tpe
-    // delete all the plugin data from the db
-  }
-
+ 
   function custom_post_type()
   {
     register_post_type('book', ['public' => true, 'label'=>'Books']);
@@ -71,6 +65,7 @@ register_activation_hook(__FILE__, array($jasonplugin, 'activate'));
 
 
 // on deactivation
-register_activation_hook(__FILE__, array($jasonplugin, 'deactivate'));
+register_deactivation_hook(__FILE__, array($jasonplugin, 'deactivate'));
 
 // on uninstall
+ 
