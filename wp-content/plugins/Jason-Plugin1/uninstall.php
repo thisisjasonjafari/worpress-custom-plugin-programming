@@ -16,8 +16,13 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 
 
 //Clear Database stored data
-$books = get_posts(array('post_type' => 'book', 'numberposts' => -1));
+// $books = get_posts(array('post_type' => 'book', 'numberposts' => -1));
 
-foreach ($books as $book) {
-  wp_delete_post($book->ID, true);
-}
+// foreach ($books as $book) {
+//   wp_delete_post($book->ID, true);
+// }
+
+// Access the database via SQL Query
+
+global $wpdb;
+$wpdb->query("DELETE FROM wp_posts WHERE post_type='book");
