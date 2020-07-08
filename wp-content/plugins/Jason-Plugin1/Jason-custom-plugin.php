@@ -37,6 +37,7 @@ class JasonnnPlugin
   function activate()
   {
     // generate custom post type
+    $this->custom_post_type();
     // flush rewrite rules
     flush_rewrite_rules();
   }
