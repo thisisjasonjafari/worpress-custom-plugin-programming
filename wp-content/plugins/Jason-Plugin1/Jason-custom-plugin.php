@@ -22,14 +22,36 @@ text-Domain: Jason-plugin
 
 
 // some code for security
-defined('ABSPATH') or die ('Hey, You cant access this file, you silly human!');
+defined('ABSPATH') or die('Hey, You cant access this file, you silly human!');
 
-if(!function_exists('add_action')){
+if (!function_exists('add_action')) {
   echo ('Hey, You cant access this file, you silly human!');
   die;
 }
 
 
+class JasonnnPlugin
+{
+
+  function __construct( )
+  {
+     
+  }
+
+  
+}
+
+if (class_exists('JasonnnPlugin')) {
+
+  $jasonplugin = new JasonnnPlugin( );
+}
+
+
+// on activation
 
 
 
+// on deactivation
+
+
+// on uninstall
