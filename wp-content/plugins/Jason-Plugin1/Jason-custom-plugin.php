@@ -24,14 +24,15 @@ text-Domain: Jason-plugin
 // some code for security
 defined('ABSPATH') or die('Hey, You cant access this file, you silly human!');
 
-if (!function_exists('add_action')) {
-  echo ('Hey, You cant access this file, you silly human!');
-  die;
-}
 
 
 class JasonnnPlugin
 {
+
+  function __construct()
+  {
+    add_action('init', array($this, 'custom_post_type'));
+  }
 
   function activate()
   {
@@ -41,13 +42,18 @@ class JasonnnPlugin
 
   function deactivate()
   {
-     // flush rewrite rules
+    // flush rewrite rules
   }
 
   function uninstall()
   {
     // delete custom post tpe
     // delete all the plugin data from the db
+  }
+
+  function custom_post_type()
+  {
+    register_post_type('book', ['public' => true, 'label'=>'Books']);
   }
 }
 
@@ -58,10 +64,10 @@ if (class_exists('JasonnnPlugin')) {
 
 
 // on activation
-register_activation_hook(__FILE__,array($jasonplugin, 'activate'));
+register_activation_hook(__FILE__, array($jasonplugin, 'activate'));
 
 
 // on deactivation
-register_activation_hook(__FILE__,array($jasonplugin, 'deactive'));
+register_activation_hook(__FILE__, array($jasonplugin, 'deactivate'));
 
 // on uninstall
