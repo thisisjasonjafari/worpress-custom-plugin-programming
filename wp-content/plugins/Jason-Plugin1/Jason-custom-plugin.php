@@ -34,6 +34,11 @@ class JasonnnPlugin
     add_action('init', array($this, 'custom_post_type'));
   }
 
+  function register()
+  {
+    add_action('admin_enqueue_scripts', array($this, 'enqueue'));
+  }
+
   function activate()
   {
     // generate custom post type
@@ -56,12 +61,14 @@ class JasonnnPlugin
   function enqueue()
   {
     // enqueue all our scripts
+    wp_enqueue_style('mypluginstyle', plugins_url('/assets/mystyle.css', __FILE__));
   }
 }
 
 if (class_exists('JasonnnPlugin')) {
 
   $jasonplugin = new JasonnnPlugin();
+  $jasonplugin->register();
 }
 
 
