@@ -33,17 +33,22 @@ if (!function_exists('add_action')) {
 class JasonnnPlugin
 {
 
-  function __construct( )
+  function activate()
   {
-     
   }
 
-  
+  function deactivate()
+  {
+  }
+
+  function uninstall()
+  {
+  }
 }
 
 if (class_exists('JasonnnPlugin')) {
 
-  $jasonplugin = new JasonnnPlugin( );
+  $jasonplugin = new JasonnnPlugin();
 }
 
 
