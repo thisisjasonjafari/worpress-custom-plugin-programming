@@ -53,10 +53,10 @@ if (class_exists('JasonnnPlugin')) {
 
 
 // on activation
-
+register_activation_hook(__FILE__,array($jasonplugin, 'activate'));
 
 
 // on deactivation
-
+register_activation_hook(__FILE__,array($jasonplugin, 'deactive'));
 
 // on uninstall
