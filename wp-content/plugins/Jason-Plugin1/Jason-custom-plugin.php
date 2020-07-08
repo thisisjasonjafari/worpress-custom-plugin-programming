@@ -47,10 +47,15 @@ class JasonnnPlugin
     // flush rewrite rules
     flush_rewrite_rules();
   }
- 
+
   function custom_post_type()
   {
-    register_post_type('book', ['public' => true, 'label'=>'Books']);
+    register_post_type('book', ['public' => true, 'label' => 'Books']);
+  }
+
+  function enqueue()
+  {
+    // enqueue all our scripts
   }
 }
 
@@ -68,4 +73,3 @@ register_activation_hook(__FILE__, array($jasonplugin, 'activate'));
 register_deactivation_hook(__FILE__, array($jasonplugin, 'deactivate'));
 
 // on uninstall
- 
