@@ -38,11 +38,13 @@ class JasonnnPlugin
   {
     // generate custom post type
     // flush rewrite rules
+    flush_rewrite_rules();
   }
 
   function deactivate()
   {
     // flush rewrite rules
+    flush_rewrite_rules();
   }
 
   function uninstall()
