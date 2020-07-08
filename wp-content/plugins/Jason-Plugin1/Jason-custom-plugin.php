@@ -29,6 +29,18 @@ defined('ABSPATH') or die('Hey, You cant access this file, you silly human!');
 class JasonnnPlugin
 {
 
+  // Public
+  // can be accessed everywhere
+
+  // Protected
+  // can be accessed only within the class itself or extensions of that class
+
+  // Private
+  // can be accessed only within the class itself
+
+  // Static
+
+
   function __construct()
   {
     add_action('init', array($this, 'custom_post_type'));
@@ -37,6 +49,11 @@ class JasonnnPlugin
   function register()
   {
     add_action('admin_enqueue_scripts', array($this, 'enqueue'));
+  }
+
+  protected function create_post_type()
+  {
+    add_action('init', array($this, 'custom_post_type'));
   }
 
   function activate()
@@ -64,6 +81,21 @@ class JasonnnPlugin
     wp_enqueue_style('mypluginstyle', plugins_url('/assets/mystyle.css', __FILE__));
     wp_enqueue_script('mypluginscript', plugins_url('/assets/myscript.js', __FILE__));
   }
+
+  private function print_stuff()
+  {
+    echo 'Test';
+  }
+}
+
+
+
+class SecondClass extends JasonnnPlugin
+{
+  function register_post_type()
+  {
+    $this->create_post_type();
+  }
 }
 
 if (class_exists('JasonnnPlugin')) {
@@ -71,6 +103,8 @@ if (class_exists('JasonnnPlugin')) {
   $jasonplugin = new JasonnnPlugin();
   $jasonplugin->register();
 }
+$secondClass = new SecondClass();
+$secondClass->register_post_type();
 
 
 // on activation
