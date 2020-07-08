@@ -21,3 +21,15 @@ text-Domain: Jason-plugin
 // }
 
 
+// some code for security
+defined('ABSPATH') or die ('Hey, You cant access this file, you silly human!');
+
+if(!function_exists('add_action')){
+  echo ('Hey, You cant access this file, you silly human!');
+  die;
+}
+
+
+
+
+
