@@ -56,19 +56,6 @@ class JasonnnPlugin
     add_action('init', array($this, 'custom_post_type'));
   }
 
-  function activate()
-  {
-    // generate custom post type
-    $this->custom_post_type();
-    // flush rewrite rules
-    flush_rewrite_rules();
-  }
-
-  function deactivate()
-  {
-    // flush rewrite rules
-    flush_rewrite_rules();
-  }
 
   function custom_post_type()
   {
@@ -82,9 +69,10 @@ class JasonnnPlugin
     wp_enqueue_script('mypluginscript', plugins_url('/assets/myscript.js', __FILE__));
   }
 
-  private function print_stuff()
+  function activate()
   {
-    echo 'Test';
+    require_once plugin_dir_path(__FILE__) . 'inc/Jason-plugin-activate.php';
+    JasonPluginActivate::activate();
   }
 }
 
@@ -112,6 +100,7 @@ register_activation_hook(__FILE__, array($jasonplugin, 'activate'));
 
 
 // on deactivation
-register_deactivation_hook(__FILE__, array($jasonplugin, 'deactivate'));
+require_once plugin_dir_path(__FILE__) . 'inc/jason-plugin-deactive.php';
+register_deactivation_hook(__FILE__, array('JasonPluginDeactivate', 'deactivate'));
 
 // on uninstall
